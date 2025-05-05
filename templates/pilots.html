@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div><a href="/index" class="btn btn-warning">В начало</a></div>
+<h1>Пилоты</h1><br>
+{% for item in pilots%}
+<h2>№ {{item.id}}</h2>
+<table class="table">
+    <tr>
+        <td>Имя</td>
+        <td>Команда</td>
+    </tr>
+    <tr>
+        <td><a href="/pilot/{{ item.id }}">{{item.name}}</a></td>
+        <td><a href="/teams/{{ item.id }}">{% for i in teams %}{% if i.id == item.team_id %}{{i.title}}{% endif %}{%
+            endfor %}</a></td>
+    </tr>
+</table>
+{% endfor %}
+{% endblock %}
